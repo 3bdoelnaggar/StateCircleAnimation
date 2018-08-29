@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="circle_view_item_width">40dp</dimen>
+    <dimen name="circle_view_item_height">40dp</dimen>
+    <dimen name="circleStorke">2dp</dimen>
+</resources>
