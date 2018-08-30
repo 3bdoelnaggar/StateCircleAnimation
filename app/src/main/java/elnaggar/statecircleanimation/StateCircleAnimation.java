@@ -21,9 +21,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by mahmoud on 14/11/17.
- */
 
 public class StateCircleAnimation extends View {
 
@@ -51,6 +48,10 @@ public class StateCircleAnimation extends View {
 
     }
 
+    /*Initialise color we have two color active an unActive
+    stroke width
+    dashed style for un Active part
+    */
     void setInitialColors() {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
@@ -78,7 +79,7 @@ public class StateCircleAnimation extends View {
         this.tvStateName = tvStateName;
     }
 
-
+    // draw part by part check which piece in any part to get the part style
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -114,6 +115,7 @@ public class StateCircleAnimation extends View {
 
     }
 
+    // return where that part start
     int getStartAngelByPart(int part) {
         int returnedValue = 198 + (part * 72);
         if (returnedValue > 360) {
@@ -122,8 +124,6 @@ public class StateCircleAnimation extends View {
         return returnedValue;
 
     }
-
-
 
 
     Paint getArcPaintByPart(int acrNum) {
@@ -147,9 +147,7 @@ public class StateCircleAnimation extends View {
         return arcPaint1;
     }
 
-
-
-
+    //this is used if you want to change the icon based on the state too
     public void changeState(int stateID) {
         switch (stateID) {
             case 1:
@@ -160,7 +158,6 @@ public class StateCircleAnimation extends View {
                 arcPaint3 = new Paint(unActivePaint);
                 arcPaint4 = new Paint(unActivePaint);
                 arcPaint5 = new Paint(unActivePaint);
-
 
 
                 break;
@@ -183,7 +180,6 @@ public class StateCircleAnimation extends View {
                 arcPaint5 = new Paint(unActivePaint);
 
 
-
                 break;
             case 4:
 
@@ -192,7 +188,6 @@ public class StateCircleAnimation extends View {
                 arcPaint3 = new Paint(activePaint);
                 arcPaint4 = new Paint(unActivePaint);
                 arcPaint5 = new Paint(unActivePaint);
-
 
 
                 break;
@@ -219,6 +214,7 @@ public class StateCircleAnimation extends View {
 
     }
 
+    //hide the icon to before animations
     private void prepareAnimation() {
         for (ImageView imageView : imageViews) {
             imageView.setScaleX(0f);
@@ -226,7 +222,7 @@ public class StateCircleAnimation extends View {
         }
     }
 
-
+//load animations base on order if you want to change order you can use int array get order based on index
     void loadAnimationOrdaly(final int i) {
         imageViews.get(i).animate().scaleX(1f).scaleY(1f).setDuration(200).setListener(new AnimatorListenerAdapter() {
             @Override
