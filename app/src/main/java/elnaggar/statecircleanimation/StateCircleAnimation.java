@@ -312,13 +312,13 @@ public class StateCircleAnimation extends View {
         this.stateId = stateId;
     }
 
-    public class CircleAngleAnimation extends Animation {
+    public static class CircleAngleAnimation extends Animation {
 
         private final int type;
-        private StateCircleAnimation circle;
+        private final StateCircleAnimation circle;
 
-        private float oldAngle;
-        private float newAngle;
+        private final float oldAngle;
+        private final float newAngle;
 
         public CircleAngleAnimation(int type, StateCircleAnimation circle, int newAngle) {
             this.oldAngle = circle.getSweapAngel();
@@ -330,16 +330,10 @@ public class StateCircleAnimation extends View {
         @Override
         protected void applyTransformation(float interpolatedTime, Transformation transformation) {
             float angle;
-            switch (type) {
-                case ZORDER_NORMAL:
-                    angle = oldAngle + ((newAngle - oldAngle) * interpolatedTime);
-                    break;
-                case REVERSE:
-                    angle = oldAngle - ((oldAngle - newAngle) * interpolatedTime);
-                    break;
-                default:
-                    angle = oldAngle + ((newAngle - oldAngle) * interpolatedTime);
-                    break;
+            if (type == REVERSE) {
+                angle = oldAngle - ((oldAngle - newAngle) * interpolatedTime);
+            } else {
+                angle = oldAngle + ((newAngle - oldAngle) * interpolatedTime);
             }
 
             circle.setSweapAngel(angle);
