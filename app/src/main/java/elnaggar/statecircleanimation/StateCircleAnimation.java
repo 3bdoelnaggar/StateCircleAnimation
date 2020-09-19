@@ -8,8 +8,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -42,7 +41,7 @@ public class StateCircleAnimation extends View {
     }
 
 
-    public StateCircleAnimation(Context context, @Nullable AttributeSet attrs) {
+    public StateCircleAnimation(Context context,  AttributeSet attrs) {
         super(context, attrs);
         setInitialColors();
 
@@ -151,15 +150,13 @@ public class StateCircleAnimation extends View {
     public void changeState(int stateID) {
         switch (stateID) {
             case 1:
-
-
+            case 0:
+            case 6:
                 arcPaint1 = new Paint(unActivePaint);
                 arcPaint2 = new Paint(unActivePaint);
                 arcPaint3 = new Paint(unActivePaint);
                 arcPaint4 = new Paint(unActivePaint);
                 arcPaint5 = new Paint(unActivePaint);
-
-
                 break;
             case 2:
                 arcPaint1 = new Paint(activePaint);
@@ -167,10 +164,7 @@ public class StateCircleAnimation extends View {
                 arcPaint3 = new Paint(unActivePaint);
                 arcPaint4 = new Paint(unActivePaint);
                 arcPaint5 = new Paint(unActivePaint);
-
-
                 break;
-
             case 3:
 
                 arcPaint1 = new Paint(activePaint);
@@ -188,11 +182,8 @@ public class StateCircleAnimation extends View {
                 arcPaint3 = new Paint(activePaint);
                 arcPaint4 = new Paint(unActivePaint);
                 arcPaint5 = new Paint(unActivePaint);
-
-
                 break;
             case 5:
-
                 arcPaint1 = new Paint(activePaint);
                 arcPaint2 = new Paint(activePaint);
                 arcPaint3 = new Paint(activePaint);
@@ -200,16 +191,7 @@ public class StateCircleAnimation extends View {
                 arcPaint5 = new Paint(activePaint);
 
                 break;
-            case 0:
-            case 6:
 
-                arcPaint1 = new Paint(unActivePaint);
-                arcPaint2 = new Paint(unActivePaint);
-                arcPaint3 = new Paint(unActivePaint);
-                arcPaint4 = new Paint(unActivePaint);
-                arcPaint5 = new Paint(unActivePaint);
-
-                break;
         }
 
     }
